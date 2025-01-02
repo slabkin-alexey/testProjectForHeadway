@@ -1,0 +1,181 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "book_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Wither. The last wish"
+          }
+        }
+      }
+    },
+    "chapter_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Voice of Reason 1: Geralt recovers at a temple after a brutal fight, reflecting on his path as a witcher."
+          }
+        }
+      }
+    },
+    "chapter_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Witcher: Geralt faces a striga to lift a curse, showcasing his cunning and combat skills."
+          }
+        }
+      }
+    },
+    "chapter_3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Voice of Reason 2: Geralt discusses morality and the nature of monsters with the priestess Nenneke."
+          }
+        }
+      }
+    },
+    "chapter_4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Grain of Truth: A chance encounter leads Geralt to uncover the tragic story of a cursed beast and a dark twist on a fairy tale."
+          }
+        }
+      }
+    },
+    "chapter_5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Voice of Reason 3: Geralt and Nenneke argue about destiny and his chosen path as a witcher."
+          }
+        }
+      }
+    },
+    "chapter_6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Lesser Evil: Geralt is forced to make a morally ambiguous choice, solidifying his reputation as a “butcher."
+          }
+        }
+      }
+    },
+    "chapter_7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Voice of Reason 4: Tensions grow between Geralt and a group of hostile knights visiting the temple."
+          }
+        }
+      }
+    },
+    "chapter_8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Question of Price: Geralt’s services are hired during a royal banquet, leading to an unexpected outcome involving the Law of Surprise."
+          }
+        }
+      }
+    },
+    "chapter_9" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Voice of Reason 5: Geralt reflects on his past decisions as he recovers further at the temple."
+          }
+        }
+      }
+    },
+    "chapter_10" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Edge of the World: Geralt and his bard companion Dandelion encounter elves, magic, and human prejudice."
+          }
+        }
+      }
+    },
+    "chapter_11" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Voice of Reason 6: Geralt’s philosophical debates deepen as he prepares for his next journey."
+          }
+        }
+      }
+    },
+    "chapter_12" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Last Wish: Geralt and Yennefer’s destinies intertwine through a dangerous wish made to a mischievous djinn."
+          }
+        }
+      }
+    },
+    "chapter_13" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Voice of Reason 7: Geralt leaves the temple, setting out once again to face the unknown."
+          }
+        }
+      }
+    },
+    "chapter_number" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chapter: %d"
+          }
+        }
+      }
+    },
+    "KEY POINT %lld OF %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "KEY POINT %1$lld OF %2$lld"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
