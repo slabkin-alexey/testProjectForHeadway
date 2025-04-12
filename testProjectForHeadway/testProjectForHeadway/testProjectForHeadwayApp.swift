@@ -1,18 +1,25 @@
 //
 //  testProjectForHeadwayApp.swift
-//  testProjectForHeadway
-//
-//  Created by Borunov Alexey on 02.01.2025.
 //
 
 import SwiftUI
+import ComposableArchitecture
+import CombineSchedulers
 
 @main
 struct testProjectForHeadwayApp: App {
+    let store = Store(
+        initialState: AppFeature.State(),
+        reducer: {
+            AppFeature()
+                .dependency(\.playerManager, PlayerManager())
+                .dependency(\.mainQueue, DispatchQueue.main.eraseToAnyScheduler())
+        }
+    )
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(.light)
+            ContentView(store: store)
         }
     }
 }

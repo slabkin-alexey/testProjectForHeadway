@@ -42,7 +42,3 @@ struct CoverComponent: View {
         .padding(.bottom, 18)
     }
 }
-
-#Preview {
-    CoverComponent(chapter: .init(projectedValue: .constant(.chapter1)))
-}

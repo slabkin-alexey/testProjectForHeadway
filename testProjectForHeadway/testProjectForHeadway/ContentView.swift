@@ -3,45 +3,69 @@
 //
 
 import SwiftUI
-import AVFoundation
+import ComposableArchitecture
 
 struct ContentView: View {
-    private let chaptersCount = ChapterType.allCases.count
-    
-    @StateObject var playerManager = PlayerManager()
-    @State var audioData: AudioData = .empty
-    @State var currentChapter: ChapterType = .chapter1
-    @State var isPlaying: Bool = false
+    let store: StoreOf<AppFeature>
     
     var body: some View {
-        VStack {
-            CoverComponent(chapter: $currentChapter)
-            ChapterKeyPointComponent(chapter: $currentChapter)
-            BookDescriptionComponent(chapter: $currentChapter)
-            ChapterSliderComponent(chapter: $currentChapter, audioData: $audioData) {
-                updatePlayerCurrentTime(time: $0)
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            VStack {
+                CoverComponent(chapter: viewStore.binding(
+                    get: \.currentChapter,
+                    send: AppFeature.Action.setChapter
+                ))
+                
+                ChapterKeyPointComponent(chapter: viewStore.binding(
+                    get: \.currentChapter,
+                    send: AppFeature.Action.setChapter
+                ))
+                
+                BookDescriptionComponent(chapter: viewStore.binding(
+                    get: \.currentChapter,
+                    send: AppFeature.Action.setChapter
+                ))
+                
+                ChapterSliderComponent(
+                    chapter: viewStore.binding(
+                        get: \.currentChapter,
+                        send: AppFeature.Action.setChapter
+                    ),
+                    audioData: viewStore.binding(
+                        get: \.audioData,
+                        send: AppFeature.Action.updateAudioData
+                    ),
+                    onSeek: { time in
+                        viewStore.send(.setCurrentTime(time))
+                    }
+                )
+                
+                SpeedButtonComponent(
+                    speed: viewStore.binding(
+                        get: \.audioData.audioSpeed,
+                        send: AppFeature.Action.updateSpeed
+                    ),
+                    onSpeedChange: { newSpeed in
+                        viewStore.send(.updateSpeed(newSpeed))
+                    }
+                )
+                
+                PlaybackControlsComponent(
+                    onPrevious: { viewStore.send(.previousChapter) },
+                    onRewind: { viewStore.send(.rewind) },
+                    onPlayPause: { viewStore.send(.togglePlayPause) },
+                    onForward: { viewStore.send(.forward) },
+                    onNext: { viewStore.send(.nextChapter) },
+                    audioData: viewStore.binding(
+                        get: \.audioData,
+                        send: AppFeature.Action.updateAudioData
+                    )
+                )
             }
-            SpeedButtonComponent(speed: $audioData.audioSpeed) { updateSpeed(speed: $0) }
-            PlaybackControlsComponent(
-                onPrevious: { previousChapter() },
-                onRewind: { rewindAudio() },
-                onPlayPause: { togglePlayPause() },
-                onForward: { forwardAudio() },
-                onNext: { nextChapter() },
-                audioData: $audioData
-            )
+            .padding()
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
         }
-        .onAppear {
-            currentChapter = ChapterType.chapter1
-            updateAudioData()
-            setupPlayer(fileName: currentChapter.audioFileName)
-        }
-        .onReceive(playerManager.$currentTime) { updateCurrentTime(time: $0) }
-        .onReceive(playerManager.$isPlaying) { isPlaying = $0 }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }

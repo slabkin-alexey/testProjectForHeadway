@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct AudioData {
+struct AudioData: Equatable {
     var fileName: String
     var audioSpeed: AudioSpeed
     var isAtStartOfList: Bool

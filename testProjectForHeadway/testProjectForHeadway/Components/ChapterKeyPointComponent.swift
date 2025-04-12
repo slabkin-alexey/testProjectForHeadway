@@ -18,7 +18,3 @@ struct ChapterKeyPointComponent: View {
             .onAppear() { chaptersCount = ChapterType.allCases.count }
     }
 }
-
-#Preview {
-    ChapterKeyPointComponent(chapter: .init(projectedValue: .constant(.chapter1)))
-}

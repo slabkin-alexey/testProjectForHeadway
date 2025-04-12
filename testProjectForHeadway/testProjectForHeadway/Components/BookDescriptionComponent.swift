@@ -16,7 +16,3 @@ struct BookDescriptionComponent: View {
             .frame(height: 60)
     }
 }
-
-#Preview {
-    BookDescriptionComponent(chapter: .init(projectedValue: .constant(.chapter1)))
-}

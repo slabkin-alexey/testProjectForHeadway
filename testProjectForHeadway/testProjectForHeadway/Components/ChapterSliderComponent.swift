@@ -53,11 +53,3 @@ struct ChapterSliderComponent: View {
         .padding(.vertical, 6)
     }
 }
-
-#Preview {
-    ChapterSliderComponent(
-        chapter: .init(projectedValue: .constant(.chapter1)),
-        audioData: .init(projectedValue: .constant(.empty)),
-        onSeek: { _ in }
-    )
-}

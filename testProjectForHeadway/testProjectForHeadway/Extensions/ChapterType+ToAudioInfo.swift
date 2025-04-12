@@ -9,7 +9,7 @@ import UIKit
 extension ChapterType {
     func toAudioData(isPlaying: Bool) -> AudioData {
         guard let audioDuration = getAudioDuration(named: audioFileName) else { return .empty }
-                
+        
         return .init(
             fileName: audioFileName,
             audioSpeed: .x1,

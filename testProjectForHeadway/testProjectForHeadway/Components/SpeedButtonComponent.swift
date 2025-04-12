@@ -8,7 +8,7 @@ import SwiftUI
 struct SpeedButtonComponent: View {
     @Binding var speed: AudioSpeed
     var onSpeedChange: (AudioSpeed) -> Void
-
+    
     var body: some View {
         Button(action: {
             speed = speed.isNormalSpeed ? .x2 : .x1
@@ -23,8 +23,4 @@ struct SpeedButtonComponent: View {
         }
         .padding(.bottom, 12)
     }
-}
-
-#Preview {
-    SpeedButtonComponent(speed: .init(projectedValue: .constant(.x1))) { _ in }
 }

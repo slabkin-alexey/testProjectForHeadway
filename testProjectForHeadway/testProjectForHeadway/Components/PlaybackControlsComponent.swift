@@ -12,7 +12,7 @@ struct PlaybackControlsComponent: View {
     var onNext: () -> Void
     
     @Binding var audioData: AudioData
-        
+    
     var body: some View {
         HStack(spacing: 30) {
             Button(action: onPrevious) {
@@ -68,15 +68,4 @@ struct PlaybackControlsComponent: View {
         }
         .padding()
     }
-}
-
-#Preview {
-    PlaybackControlsComponent(
-        onPrevious: { print("Previous track") },
-        onRewind: { print("Rewind 5 seconds") },
-        onPlayPause: { print("Play/Pause toggled") },
-        onForward: { print("Forward 10 seconds") },
-        onNext: { print("Next track") },
-        audioData: .init(projectedValue: .constant(.empty))
-    )
 }

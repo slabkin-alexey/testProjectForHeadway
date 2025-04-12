@@ -5,15 +5,22 @@
 import Foundation
 import AVFoundation
 import UIKit
+import Combine
 
 class PlayerManager: ObservableObject {
     private var audioPlayer: AVAudioPlayer?
     private var timer: Timer?
+    private let currentTimeSubject = PassthroughSubject<TimeInterval, Never>()
+    var onReadyToPlay: ((TimeInterval) -> Void)?
     
     @Published var isPlaying: Bool = false
     @Published var currentTime: TimeInterval = 0
     @Published var duration: TimeInterval = 0
     @Published var playbackSpeed: Float = 1.0
+    
+    var currentTimePublisher: AnyPublisher<TimeInterval, Never> {
+        currentTimeSubject.eraseToAnyPublisher()
+    }
     
     func setupPlayer(withFileName fileName: String) {
         guard let dataAsset = NSDataAsset(name: fileName) else {
@@ -25,8 +32,10 @@ class PlayerManager: ObservableObject {
             audioPlayer = try AVAudioPlayer(data: dataAsset.data)
             audioPlayer?.prepareToPlay()
             audioPlayer?.enableRate = true
-            duration = audioPlayer?.duration ?? 0
-            currentTime = 0
+            audioPlayer?.currentTime = .zero
+            currentTime = .zero
+            currentTimeSubject.send(.zero)
+            duration = audioPlayer?.duration ?? .zero
             playbackSpeed = 1.0
         } catch {
             print("An error occurred while initializing the player: \(error.localizedDescription)")
@@ -95,9 +104,11 @@ class PlayerManager: ObservableObject {
     private func startTimer() {
         stopTimer()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-            guard let self = self, let player = self.audioPlayer else { return }
-            DispatchQueue.main.async {
-                self.currentTime = player.currentTime
+            DispatchQueue.main.async { [weak self] in
+                guard let self, let audioPlayer else { return }
+
+                currentTime = audioPlayer.currentTime
+                currentTimeSubject.send(audioPlayer.currentTime)
             }
         }
     }

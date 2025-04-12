@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum ChapterType: Int, CaseIterable {
+enum ChapterType: Int, CaseIterable, Equatable {
     case chapter1 = 1
     case chapter2
     case chapter3

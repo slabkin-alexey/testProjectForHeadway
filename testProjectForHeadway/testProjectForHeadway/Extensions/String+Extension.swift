@@ -20,7 +20,7 @@ extension String {
         let format = NSLocalizedString(self, tableName: nil, bundle: .main, comment: "")
         
         guard !format.isEmpty else { return self }
-
+        
         return String(format: format, arguments: arguments)
     }
 }

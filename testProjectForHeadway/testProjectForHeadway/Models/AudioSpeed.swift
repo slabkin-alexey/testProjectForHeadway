@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum AudioSpeed: Float {
+enum AudioSpeed: Float, Equatable {
     case x1 = 1
     case x2
 }
